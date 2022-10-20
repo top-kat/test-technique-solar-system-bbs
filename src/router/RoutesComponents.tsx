@@ -1,12 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, RouteComponentProps, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
 import Layout from '../layouts/Layout'
 import { RouteType } from '../types/routes'
 
 import { publicLayoutRoutes } from './routes'
 
-const childRoutes = (Layout: React.ElementType, routes: Array<RouteType>) =>
+const history = createBrowserHistory()
+
+const childRoutes = (routes: Array<RouteType>) =>
   routes.map(({ component: Component, guard, children, path }, index: number) => {
     let Guard = guard || React.Fragment
 
@@ -47,8 +50,8 @@ const childRoutes = (Layout: React.ElementType, routes: Array<RouteType>) =>
   })
 
 const RoutesComponents = () => (
-  <Router>
-    <Switch>{childRoutes(Layout, publicLayoutRoutes)}</Switch>
+  <Router {...{ history }}>
+    <Switch>{childRoutes(publicLayoutRoutes)}</Switch>
   </Router>
 )
 

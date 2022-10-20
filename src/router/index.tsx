@@ -6,4 +6,5 @@ export const router = (route: string, options?: { [key: string]: string }): stri
 
 export const routesPath = {
   home: '/',
+  planet: '/planet/:planetId',
 }

@@ -1,46 +1,47 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import { createTheme } from '@mui/material'
 
-import { light } from './palette'
 import { declarations } from './fonts'
 import typography from './typography'
 import breakpoints from './breakpoints'
 
 const getTheme = () =>
   // responsiveFontSizes(
-  createMuiTheme({
-    palette: light,
+  createTheme({
+    palette: { mode: 'dark' },
     breakpoints: breakpoints,
-    typography: typography,
-    layout: {
-      contentWidth: 1236,
-    },
+    typography,
     zIndex: {
       appBar: 1200,
       drawer: 1100,
     },
-    overrides: {
+    components: {
       MuiCssBaseline: {
-        '@global': {
-          '@font-face': Object.values(declarations).map((declaration) => {
-            return {
-              fontFamily: declaration.fontFamily,
-              fontStyle: 'normal',
-              fontDisplay: 'swap',
-              fontWeight: declaration.fontWeight,
-              src: `
-                  url("/fonts/${declaration.basename}/${declaration.basename}.woff2") format("woff2"), 
-                  url("/fonts/${declaration.basename}/${declaration.basename}.woff") format("woff");
-                `,
-            }
-          }),
-          html: {
-            fontSize: '62.5%',
-            '& .hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV': {
-              transform: 'scale(0.6)!important',
-              left: '0!important',
-              [`@media screen and (min-width: ${breakpoints.values.md}px)`]: {
-                left: '5px!important',
-                transform: 'scale(0.8)!important',
+        styleOverrides: {
+          '@global': {
+            a: {
+              textDecoration: 'none',
+            },
+            '@font-face': Object.values(declarations).map((declaration) => {
+              return {
+                fontFamily: declaration.fontFamily,
+                fontStyle: 'normal',
+                fontDisplay: 'swap',
+                fontWeight: declaration.fontWeight,
+                src: `
+                        url("/fonts/${declaration.basename}/${declaration.basename}.woff2") format("woff2"), 
+                        url("/fonts/${declaration.basename}/${declaration.basename}.woff") format("woff");
+                      `,
+              }
+            }),
+            html: {
+              fontSize: '62.5%',
+              '& .hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV.hMxmxV': {
+                transform: 'scale(0.6)!important',
+                left: '0!important',
+                [`@media screen and (min-width: ${breakpoints.values.md}px)`]: {
+                  left: '5px!important',
+                  transform: 'scale(0.8)!important',
+                },
               },
             },
           },

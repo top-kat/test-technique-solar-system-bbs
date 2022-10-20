@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout } from 'react-feather'
 
 import HomePage from '../pages/Home'
+import PlanetInfo from '../pages/PlanetInfo'
 
 import { routesPath } from './index'
 
@@ -27,6 +28,11 @@ const publicRoutes = {
       path: routesPath.home,
       name: 'Home',
       component: HomePage,
+    },
+    {
+      path: routesPath.planet,
+      name: 'Planet',
+      component: PlanetInfo,
     },
   ],
 }

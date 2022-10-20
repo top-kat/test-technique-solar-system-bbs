@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
-import { Paper } from '@material-ui/core'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { StylesProvider, ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, createTheme, CssBaseline, Paper } from '@mui/material'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import getTheme from '../src/theme'
 
+import { APIContextProvider } from './contextes/SolarSystemApiDataContext'
 import RoutesComponents from './router/RoutesComponents'
 import { app } from './configuration'
+
+const theme = createTheme(getTheme())
 
 const App: FC = (props) => {
   const { children } = props
@@ -37,21 +38,21 @@ const App: FC = (props) => {
   )
 
   return (
-    <React.Fragment>
-      <HelmetProvider>
-        <Helmet defaultTitle="boilerplate-react-js - App">{gtmScript}</Helmet>
-        <StylesProvider injectFirst>
-          <StyledThemeProvider theme={getTheme()}>
+    <ThemeProvider theme={theme}>
+      <APIContextProvider>
+        <HelmetProvider>
+          <Helmet defaultTitle="boilerplate-react-js - App">{gtmScript}</Helmet>
+          <CssBaseline />
+          <StyledThemeProvider theme={getTheme() as any}>
             <ThemeProvider theme={getTheme()}>
-              <CssBaseline />
               <Paper elevation={0}>{children}</Paper>
               <RoutesComponents />
             </ThemeProvider>
           </StyledThemeProvider>
-        </StylesProvider>
-        {gtmNoScript}
-      </HelmetProvider>
-    </React.Fragment>
+          {gtmNoScript}
+        </HelmetProvider>
+      </APIContextProvider>
+    </ThemeProvider>
   )
 }
 

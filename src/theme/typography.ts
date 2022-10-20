@@ -1,6 +1,6 @@
-import { TypographyOptions } from '@material-ui/core/styles/createTypography'
+import { TypographyVariantsOptions } from '@mui/material'
 
-const typography: TypographyOptions = {
+const typography: TypographyVariantsOptions = {
   fontFamily: ['Poppins', 'sans-serif'].join(','),
   fontSize: 13,
   fontWeightLight: 300,
@@ -12,6 +12,7 @@ const typography: TypographyOptions = {
     fontSize: '3.2rem',
     fontWeight: 700,
     lineHeight: 0.9,
+    opacity: 0.6,
   },
   h2: {
     fontFamily: 'Poppins, sans-serif',
@@ -21,20 +22,20 @@ const typography: TypographyOptions = {
     textTransform: 'uppercase',
   },
   h3: {
-    fontFamily: 'Poppins, serif',
-    fontSize: '2.4rem',
+    fontFamily: 'Poppins, sans-serif',
+    fontSize: '1.6rem',
     fontWeight: 600,
     lineHeight: 1.4,
   },
   h4: {
     fontFamily: 'Poppins, sans-serif',
-    fontSize: '1.8rem',
+    fontSize: '1.4rem',
     fontWeight: 600,
     lineHeight: 1.4,
   },
   h5: {
     fontFamily: 'Poppins, sans-serif',
-    fontSize: '1.6rem',
+    fontSize: '1.4rem',
     fontWeight: 600,
     lineHeight: 1.4,
   },
@@ -53,7 +54,7 @@ const typography: TypographyOptions = {
   },
   body1: {
     fontFamily: 'Lato, sans-serif',
-    fontSize: '1.6rem',
+    fontSize: '1rem',
     lineHeight: '160%',
   },
   body2: {
@@ -111,7 +112,7 @@ const typography: TypographyOptions = {
   },
   smallStrong: {
     fontFamily: 'Poppins, sans-serif',
-    fontSize: '1.4rem',
+    fontSize: '0.8rem',
     fontWeight: 600,
     lineHeight: 1.4,
   },
@@ -149,8 +150,8 @@ const typography: TypographyOptions = {
 
 export default typography
 
-declare module '@material-ui/core/styles/createTypography' {
-  interface Typography {
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
     h1: React.CSSProperties
     h2: React.CSSProperties
     h3: React.CSSProperties
@@ -177,7 +178,7 @@ declare module '@material-ui/core/styles/createTypography' {
   }
 
   // allow configuration using `createMuiTheme`
-  interface TypographyOptions {
+  interface TypographyVariantsOptions {
     h1: React.CSSProperties
     h2: React.CSSProperties
     h3: React.CSSProperties
@@ -204,7 +205,7 @@ declare module '@material-ui/core/styles/createTypography' {
   }
 }
 
-declare module '@material-ui/core/Typography/Typography' {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     h1: true
     h2: true

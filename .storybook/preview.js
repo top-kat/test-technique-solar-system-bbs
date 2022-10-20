@@ -1,9 +1,13 @@
 import React from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import { StylesProvider, ThemeProvider, CssBaseline } from '@mui/material'
 import { withDesign } from 'storybook-addon-designs'
-import { CssBaseline } from '@material-ui/core'
-import { StylesProvider, ThemeProvider } from '@material-ui/styles'
 import '../src/i18n'
+import { MemoryRouter } from 'react-router'
+
+import getTheme from '../src/theme'
+
+import viewport from './config/viewport'
 
 global.__BASE_PATH__ = '/'
 
@@ -57,12 +61,6 @@ const withContainerStyle = (Story, context) => {
     return <Story />
   }
 }
-
-import { MemoryRouter } from 'react-router'
-
-import getTheme from '../src/theme'
-
-import viewport from './config/viewport'
 
 const memoryRouter = (story) => <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
 

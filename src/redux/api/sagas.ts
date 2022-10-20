@@ -80,7 +80,7 @@ export default class ApiSagas {
           Variables: variables,
           Config: service,
         })
-        bugsnagClient.notify(e)
+        bugsnagClient.notify(e as any)
       }
 
       return {
@@ -125,7 +125,7 @@ export default class ApiSagas {
           Variables: variables,
           Config: service,
         })
-        bugsnagClient.notify(e)
+        bugsnagClient.notify(e as any)
       }
 
       return {

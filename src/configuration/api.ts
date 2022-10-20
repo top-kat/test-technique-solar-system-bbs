@@ -5,4 +5,5 @@ export default {
   BASIC_AUTH: null,
   DEBUG: Number(process.env.REACT_APP_API_DEBUG) === 1,
   UPLOAD_ENDPOINT: `${process.env.REACT_APP_API_URL}/upload`,
+  SOLAR_SYSTEM_INFO_API: 'https://api.le-systeme-solaire.net/rest/bodies',
 }
